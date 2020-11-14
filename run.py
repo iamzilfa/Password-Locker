@@ -18,6 +18,12 @@ def save_user(user):
     """
     user.save_user()
 
+def display_user(user):
+    """
+    Function to display saved user
+    """
+    return User.display_user()
+
 def delete_user(user):
     """
     Function to delete a user

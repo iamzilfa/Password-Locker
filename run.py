@@ -44,3 +44,11 @@ def create_credential(account,username,password):
     new_credential = Credential(account,username,password)
     return new_credential 
 
+def save_credential(credential):
+    """
+    Function to save credential
+    """
+    credential.save_credential()
+
+
+

@@ -60,5 +60,25 @@ class TestCredential(unittest.TestCase):
             self.new_credential.delete_credential()
             self.assertEqual(len(Credential.credential_list),1)
 
+
+    def test_find_credential_by_username(self):
+        self.new_credential.save_credential()
+        test_credential = Credential("Gmail","zilcyam","a1b2c3d4")
+        test_credential.save_credential()
+
+        found_credential = Credential.find_by_username("zilcyam")
+        self.assertEqual(found_credential.password,test_credential.password)
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     unittest.main()

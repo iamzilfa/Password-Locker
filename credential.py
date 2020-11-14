@@ -32,6 +32,23 @@ class Credential:
 
     @classmethod
     def find_by_username(cls,username):
+
+        """
+         Method that takes in a username and returns an account that matches that username.
+        """
+
         for credential in cls.credential_list:
             if credential.username == username:
                 return credential
+                
+
+    @classmethod
+    def credential_exist(cls,username):
+        '''
+         Method that checks if a credential exists from the credential list.
+        '''
+        for credential in cls.credential_list:
+            if credential.username == username:
+                return True
+
+        return False

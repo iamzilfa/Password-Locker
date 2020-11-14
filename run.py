@@ -62,6 +62,13 @@ def delete_credential(credential):
     """
     credential.delete_credential()
 
+def find_by_username(username):
+    """
+    Function that finds in credential a username and returns the credentials that matches that username.
+    """
+    return Credential.find_by_username(username)
+
+
 
     
 

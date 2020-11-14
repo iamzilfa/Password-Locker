@@ -75,6 +75,19 @@ class TestCredential(unittest.TestCase):
         found_credential = Credential.find_by_username("zilcyam")
         self.assertEqual(found_credential.password,test_credential.password)
 
+    def test_copy_password(self):
+        '''
+        Test to confirm that we are copying the password from a found credential
+        '''
+
+        self.new_credential.save_credential()
+        Credential.copy_password("zilfeur")
+        self.assertEqual(self.new_credential.password,pyperclip.paste())
+
+
+
+
+
     def test_credential_exists(self):
         '''
         test to check if we can return a Boolean  if we cannot find the contact.

@@ -50,5 +50,12 @@ def save_credential(credential):
     """
     credential.save_credential()
 
+def display_credential():
+    """
+    Function that displays all credentials
+    """
+    return Credential.display_credential()
+
+
 
 

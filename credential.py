@@ -1,11 +1,26 @@
 #!/usr/bin/env python3.6
 import pyperclip
+from user import User
+import random
+import string
+
 class Credential:
     """
     Class that generates new instances of user logins
     """
 
     credential_list = []
+
+    @classmethod
+    def verify_user(cls,username, password):
+        """
+        method to verify whether the user is our user_list or not
+        """
+        actual_user = ""
+        for user in User.user_list:
+            if(user.username == username and user.password == password):
+                actual_user == user.username
+        return actual_user
 
     def __init__(self,account,username,password): 
 
@@ -67,3 +82,5 @@ class Credential:
         '''
 
         return cls.credential_list
+
+    

@@ -56,6 +56,12 @@ def display_credential():
     """
     return Credential.display_credential()
 
+def delete_credential(credential):
+    """
+    Function to delete credentials
+    """
+    credential.delete_credential()
 
 
+    
 

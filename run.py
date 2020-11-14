@@ -24,6 +24,10 @@ def display_user(user):
     """
     return User.display_user()
 
+def passwordGenerate(size = 8, charact=string.ascii_letters + string.digits + string.punctuation):
+
+    return''.join(random.choice(charact)for i in range(size))
+
 def login_user(username,password):
     """
     Function that checks whether a user exist and then login the user in.

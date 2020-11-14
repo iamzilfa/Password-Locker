@@ -24,6 +24,13 @@ def display_user(user):
     """
     return User.display_user()
 
+def login_user(username,password):
+    """
+    Function that checks whether a user exist and then login the user in.
+    """
+    check_user = Credential.verify_user(username,password)
+    return check_user
+
 def delete_user(user):
     """
     Function to delete a user

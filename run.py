@@ -80,6 +80,11 @@ def credential_exists(username):
     """
     return Credential.credential_exist(username)
 
+def copy_passwords(username):
+    return Credential.copy_password(username)
+
+
+
 
 
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.6
+import pyperclip
 import unittest
 from credential import Credential
 
@@ -84,6 +86,16 @@ class TestCredential(unittest.TestCase):
 
         credentail_exists = Credential.credential_exist("zilcyam")
         self.assertTrue(credentail_exists)
+
+    def test_display_all_credential(self):
+        '''
+        method that returns a list of all credentials saved
+        '''
+        self.assertEqual(Credential.display_credential(),Credential.credential_list)
+
+
+
+
 
 
 

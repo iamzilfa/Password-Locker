@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.6
+import pyperclip
 class Credential:
     """
     Class that generates new instances of user logins
@@ -52,3 +54,11 @@ class Credential:
                 return True
 
         return False
+
+    @classmethod
+    def display_credential(cls):
+        '''
+        method that returns the credential list
+        '''
+
+        return cls.credential_list

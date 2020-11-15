@@ -24,6 +24,9 @@
 * A user store my existing login credentials
 * Generate a new credential password
 
+## Picture
+
+![Password-Locker](pasword.png)
 
 
 ## Technologies Used

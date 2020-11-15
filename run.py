@@ -83,15 +83,26 @@ def copy_passwords(username):
     return Credential.copy_password(username)
 
 def main():
-    print("Hello There Welcome! \n Please enter you name. \n CA ---  Create New Account  \n LI ---  Have An Account  \n")
+    print('='*60)
+    print('*' *60)
+    print('-' *60)
+    print("                   PASSWORD LOCKER")
+    print('-' *60)
+    print('*' *60)
+    print('='*60)
+    print("Hello there You're most Welcome")
+    print('\n')
+    print("-Create New account: CNA\n-Login to your account: LG  \n")
     short_code = input("").lower().strip()
-    if short_code == "ca":
+    if short_code == "cna":
+        print('\n')
         print("Sign Up")
-        print('*' * 50)
-        username = input("User_name: ")
+        print('-' * 30)
+        username = input("User_name:")
+        print('\n')
 
         while True:
-            print("TP - To type your own password:\n GP - To generate random Password")
+            print("-Type your password: TP\n-Generate random Password: GP \n")
             password_Choice = input().lower().strip()
             if password_Choice == 'tp':
                 password = input("Enter Password\n")
@@ -102,14 +113,17 @@ def main():
             else:
                 print("Invalid password please try again")
         save_users(create_users(username,password))
-        print("*"*85)
-        print(f"Hello {username}, Your account has been created succesfully! Your password is:{password}")
-        print("*"*85)
+        print('\n')
+        print("*"*55)
+        print(f"Hello {username}, Your account has been created succesfully!")
+        print(f"Your generated password is:{password}")
+        print("*"*55)
+        print('\n')
 
-    elif short_code == "li":
-        print("*"*5)
+    elif short_code == "lg":
+        print('\n')
         print("Enter your User name and your Password to log in:")
-        print('*' * 0)
+        print('*'*50)
         username = input("username: ")
         password = input("password: ")
         # login = login_users(username,password)
@@ -120,24 +134,27 @@ def main():
         else:
             login_users(username,password)
             print('\n')
-            print(f"Hello {username}. Welcome To PassWord Locker Generator")
+            print(f"Hello {username}. Welcome To PassWord Locker App")
+            print('*' * 50)
             print('\n')
 
 
     while True:
-        print("Use these short codes:\n NC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n D - Delete credential \n GRP - Generate a random password  \n EX - Exit the application \n")
+        print("Use these short codes:")
+        print('-'*30)
+        print("Create a new credential:    NC\nDisplay Credentials:        DC\nFind a credential:          FC\nDelete credential:          DL\nGenerate a random password: GP\nExit the application:       EX \n")
         short_code = input().lower().strip()
 
 
         if short_code == "nc":
+            print('\n')
             print("Create New Credential")
-            print("."*20)
-            print("Account name ....")
-            account = input().upper()
-            print("Your Account username")
-            username = input()
+            print("-"*20)
+            account = input("Account name:")
+            username=input("Your username:")
+            print('\n')
             while True:
-                print("YP - To type your own password :\n GRP - Generate random Password")
+                print("-Type your own password:   YP\n-Generate random Password: GP")
                 password_Choice = input().lower().strip()
 
                 if password_Choice == 'yp':
@@ -145,76 +162,85 @@ def main():
                     break
 
                 
-                elif password_Choice == 'grp':
+                elif password_Choice == 'gp':
                     password = password_generates()
                     break
                 else:
                     print("Invalid password please try again")
             save_credentials(create_credentials(account,username,password))
             print('\n')
-            print(f"Account Credential for: {account} - Username: {username} - Password:{password} created succesfully")
+            print(f"Account Credential details:")
+            print('*'*50)
+            print(f"Account-name: {account}\nUsername: {username}\nPassword:{password}")
+            print('*'*50)
             print('\n')
             print(f"{username} what else do you want to do?")
             print('\n')
 
 
         elif short_code == "dc":
+            print('\n')
             if display_all_credential():
-                print("Here's your list of accounts: ")
-                print('_'* 30)
-
-                print('*' * 30)
+                print("Here's your list of credential accounts: ")
+                print('*'* 50)
                 for account in display_all_credential():
                     print(f"Account: {account.account} \n Username: {username}\n Password: {password}")
-                    print('_'*30)
-                print('*' *30)
+                    print('*'*50)
+                    print('\n')
             else:
                 print("You don't have any credentials saved yet.....")
+                print('\n')
 
 
         elif short_code == "fc":
+            print()
             print("Enter the username of the Credential you want to search for")
             search_username = input().lower()
             if credential_exists(search_username):
                 search_credential = find_credential(search_username)
+                print('*' * 50)
                 print(f"Account Name : {search_credential.account}")
-                print('-' * 25)
-                print('*'* 25)
                 print(f"Username: {search_credential.username}")
                 print(f"Password :{search_credential.password}")
-                print('-' * 25)
-                print('*'* 25)
+                print('*' * 50)
+                print('\n')
             else:
                 print("That Credential does not exist")
-                print('/n')
+                print('\n')
 
 
-        elif short_code == 'd':
+        elif short_code == 'dl':
+            print('\n')
             print("Enter the username of the Credential you want to delete")
             search_username = input().lower()
             if credential_exists(search_username):
                 search_credential = find_credential(search_username)
-                print("-"*50)
+                print("*"*50)
                 search_credential.delete_credentials()
-                print('\n')
-                print(f"Your stored credentials for: {search_credential.username} successful deleted")
-                print('\n')
+                print(f"{search_credential.username} stored credentials deleted")
+                print('*'*50)
             else:
-                print("That Credential you want to delete does not exist in your store yet")
+                print("The Credential does not exist anymore in your store")
 
-        elif short_code == 'grp':
+        elif short_code == 'gp':
 
             password = password_generates()
-            print(f"{password} Has been generated succesfull \n You can use it to your account")
+            print('*' *30)
+            print(f"{password} Has been succesfull generated\nYou can use it")
+            print('*' * 30)
             print('\n')
 
         elif short_code == 'ex':
-            print("Thanks for using Password Locker.. See you next time!")
+            print('\n')
+            print('*' * 50)
+            print("Thank You for using the App!")
+            print('*' * 50)
+            print('\n')
             break
         else:
-            print("Wrong entry... Check your entry again and let it match those in the menu")
+            print("Wrong entry... Try again")
     else:
-        print("Please enter a valid input to continue")
+        print("Please enter a valid input")
         
 
 

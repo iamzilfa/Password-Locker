@@ -24,7 +24,7 @@
 * A user store my existing login credentials
 * Generate a new credential password
 
-## Picture
+## App image
 
 ![Password-Locker](pasword.png)
 

@@ -1,12 +1,22 @@
 #!/usr/bin/env python3.6
 import pyperclip
 from user import User
+import random 
+import string
 
 
 class Credential:
     """
     Class that generates new instances of user logins
     """
+    def __init__(self,account,username,password): 
+
+        """
+        initilising user logins
+        """
+        self.account = account
+        self.username = username
+        self.password = password
 
     credential_list = []
 
@@ -21,14 +31,7 @@ class Credential:
                 actual_user == user.username
         return actual_user
 
-    def __init__(self,account,username,password): 
-
-        """
-        initilising user logins
-        """
-        self.account = account
-        self.username = username
-        self.password = password
+    
 
     def save_credential(self):
 
@@ -38,13 +41,25 @@ class Credential:
 
         Credential.credential_list.append(self)
 
-    def delete_credential(self):
+        
+
+    def delete_credentials(self):
 
         '''
         delete_credential method deletes a saved credential from the credential_list
         '''
 
         Credential.credential_list.remove(self)
+
+    @classmethod
+    def password_generate(cls):
+        """
+        Generate a random password using string of letters and digits and special characters
+        """
+        size = 8
+        charact = string.ascii_letters + string.digits + string.punctuation
+        pass_word = ''.join(random.choice(charact)for i in range(size))
+        return pass_word
 
     @classmethod
     def find_by_username(cls,username):
@@ -75,7 +90,7 @@ class Credential:
         return False
 
     @classmethod
-    def display_credential(cls):
+    def display_all_credential(cls):
         '''
         method that returns the credential list
         '''

@@ -48,21 +48,30 @@ class TestCredential(unittest.TestCase):
             '''
 
             self.new_credential.save_credential()
-            test_credential = Credential("Gmail","zilcyam","a1b2c3d4")
+            test_credential = Credential("Facebook","zilcya","1a2b3c4d")
             test_credential.save_credential()
             self.assertEqual(len(Credential.credential_list),2)
+
 
     def test_delete_credential(self):
             """
             test_delete_credential to test if we can remove an account credentials from our credential list
             """
             self.new_credential.save_credential()
-            test_credential = Credential("Gmail","zilcyam","a1b2c3d4")
+            test_credential = Credential("Facebook","zilcya","1a2b3c4d")
             test_credential.save_credential()
 
-            self.new_credential.delete_credential()
+            self.new_credential.delete_credentials()
             self.assertEqual(len(Credential.credential_list),1)
 
+    def test_password_generate(self):
+        """"
+        Test case to test if a user can log into their credentials
+        """
+        password_generate = self.new_credential.password_generate()
+        self.assertEqual(len(password_generate),8)
+
+        
 
     def test_find_credential_by_username(self):
         '''
@@ -87,8 +96,6 @@ class TestCredential(unittest.TestCase):
 
 
 
-
-
     def test_credential_exists(self):
         '''
         test to check if we can return a Boolean  if we cannot find the contact.
@@ -105,19 +112,7 @@ class TestCredential(unittest.TestCase):
         '''
         method that returns a list of all credentials saved
         '''
-        self.assertEqual(Credential.display_credential(),Credential.credential_list)
-
-
-
-
-
-
-
-
-
-
-
-
+        self.assertEqual(Credential.display_all_credential(),Credential.credential_list)
 
 
 if __name__ == '__main__':

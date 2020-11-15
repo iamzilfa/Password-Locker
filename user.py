@@ -9,23 +9,24 @@ class User:
 
         """
         initilising user logins
+        
+        Args:
+            username: name of a user
+            password: password for a user
         """
+
         self.username = username
         self.password = password
 
     def save_user(self):
 
         """
-         save_user method saves contact objects into user_list
+        Method saves user objects into user_list
         """
 
         User.user_list.append(self)
 
-    @classmethod
-    def display_user(cls):
-        return cls.user_list  
-        
-
+   
     def delete_user(self):
 
         '''
@@ -34,4 +35,7 @@ class User:
 
         User.user_list.remove(self)
 
-   
+    @classmethod
+    def display_user(cls):
+        return cls.user_list  
+        

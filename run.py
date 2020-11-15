@@ -1,9 +1,6 @@
 #!/usr/bin/env python3.6
 from user import User
 from credential import Credential
-import random
-import string
-import sys
 
 def create_users(username,password):
     """
@@ -86,72 +83,69 @@ def copy_passwords(username):
     return Credential.copy_password(username)
 
 def main():
-    print("Hello There Welcome! \n Please enter you name")
-    user_name = input()
-    print('\n')
-    print(f"Hello {user_name}. how can I help you?")
-    print('\n')
-    # short_code = input("").lower().strip()
-    # if short_code == "ca":
-    #     print("Sign Up")
-    #     print('*' * 50)
-    #     username = input("User_name: ")
+    print("Hello There Welcome! \n Please enter you name. \n CA ---  Create New Account  \n LI ---  Have An Account  \n")
+    short_code = input("").lower().strip()
+    if short_code == "ca":
+        print("Sign Up")
+        print('*' * 50)
+        username = input("User_name: ")
 
-    #     while True:
-    #         print("TP - To type your own password:\n GP - To generate random Password")
-    #         password_Choice = input().lower().strip()
-    #         if password_Choice == 'tp':
-    #             password = input("Enter Password\n")
-    #             break
-    #         elif password_Choice == 'gp':
-    #             password = password_generates()
-    #             break
-    #         else:
-    #             print("Invalid password please try again")
-    #     save_users(create_users(username,password))
-    #     print("*"*85)
-    #     print(f"Hello {user_name}, Your account has been created succesfully! Your password is:{password}")
-    #     print("*"*85)
+        while True:
+            print("TP - To type your own password:\n GP - To generate random Password")
+            password_Choice = input().lower().strip()
+            if password_Choice == 'tp':
+                password = input("Enter Password\n")
+                break
+            elif password_Choice == 'gp':
+                password = password_generates()
+                break
+            else:
+                print("Invalid password please try again")
+        save_users(create_users(username,password))
+        print("*"*85)
+        print(f"Hello {username}, Your account has been created succesfully! Your password is:{password}")
+        print("*"*85)
 
-    # elif short_code == "ha":
-    #     print("*"*5)
-    #     print("Enter your User name and your Password to log in:")
-    #     print('*' * 0)
-    #     username = input("username: ")
-    #     password = input("password: ")
-    #     # login = login_users(username,password)
-    #     if login_users(username,password) == None:
-    #         print('\n')
-    #         print("Please try again")
-    #         print('\n')
-    #     else:
-    #         login_users(username,password)
-    #         print('\n')
-    #         print(f"Hello {user_name}. Welcome To PassWord Locker Generator")
-    #         print('\n')
+    elif short_code == "li":
+        print("*"*5)
+        print("Enter your User name and your Password to log in:")
+        print('*' * 0)
+        username = input("username: ")
+        password = input("password: ")
+        # login = login_users(username,password)
+        if login_users(username,password) == None:
+            print('\n')
+            print("Please try again")
+            print('\n')
+        else:
+            login_users(username,password)
+            print('\n')
+            print(f"Hello {username}. Welcome To PassWord Locker Generator")
+            print('\n')
 
 
     while True:
-        print("Use these short codes:\n CC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n GP - Generate a random password \n D - Delete credential \n EX - Exit the application \n")
+        print("Use these short codes:\n NC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n D - Delete credential \n GRP - Generate a random password  \n EX - Exit the application \n")
         short_code = input().lower().strip()
 
 
-        if short_code == "cc":
+        if short_code == "nc":
             print("Create New Credential")
             print("."*20)
             print("Account name ....")
-            account = input().lower()
+            account = input().upper()
             print("Your Account username")
             username = input()
             while True:
-                print("TP - To type your own password if you already have an account:\n GP - To generate random Password")
+                print("YP - To type your own password :\n GRP - Generate random Password")
                 password_Choice = input().lower().strip()
-                if password_Choice == 'tp':
+
+                if password_Choice == 'yp':
                     password = input("Enter Your Own Password\n")
                     break
 
                 
-                elif password_Choice == 'gp':
+                elif password_Choice == 'grp':
                     password = password_generates()
                     break
                 else:
@@ -167,9 +161,9 @@ def main():
         elif short_code == "dc":
             if display_all_credential():
                 print("Here's your list of accounts: ")
+                print('_'* 30)
 
                 print('*' * 30)
-                print('_'* 30)
                 for account in display_all_credential():
                     print(f"Account: {account.account} \n Username: {username}\n Password: {password}")
                     print('_'*30)
@@ -184,10 +178,12 @@ def main():
             if credential_exists(search_username):
                 search_credential = find_credential(search_username)
                 print(f"Account Name : {search_credential.account}")
-                print('-' * 30)
+                print('-' * 25)
+                print('*'* 25)
                 print(f"Username: {search_credential.username}")
                 print(f"Password :{search_credential.password}")
-                print('-' * 20)
+                print('-' * 25)
+                print('*'* 25)
             else:
                 print("That Credential does not exist")
                 print('/n')
@@ -206,10 +202,10 @@ def main():
             else:
                 print("That Credential you want to delete does not exist in your store yet")
 
-        elif short_code == 'gp':
+        elif short_code == 'grp':
 
             password = password_generates()
-            print(f"{password} Has been generated succesfull/ You can proceed to use it to your account")
+            print(f"{password} Has been generated succesfull \n You can use it to your account")
             print('\n')
 
         elif short_code == 'ex':
